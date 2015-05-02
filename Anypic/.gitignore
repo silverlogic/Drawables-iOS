@@ -1,10 +1,5 @@
 # Xcode
-<<<<<<< HEAD
 build/*
-=======
-#
-build/
->>>>>>> b0ebf09f4c617ab91712172f7b4a6558fb426471
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -13,23 +8,7 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-<<<<<<< HEAD
-*.xcworkspace
-!default.xcworkspace
-xcuserdata
-profile
-*.moved-aside
-Resources/Configuration/Private.xcconfig
-# OS X
-.DS_Store
-.pid_file
-.sass-cache
 
-# Cocoapods
-Pods
-Podfile.lock
-Anypic.xcworkspace
-=======
 xcuserdata
 *.xccheckout
 *.moved-aside
@@ -45,4 +24,3 @@ DerivedData
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 #Pods/
->>>>>>> b0ebf09f4c617ab91712172f7b4a6558fb426471
