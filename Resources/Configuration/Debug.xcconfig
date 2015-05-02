@@ -1,0 +1,14 @@
+//
+//  Debug.xcconfig
+//  Anypic
+//
+//  Created by Héctor Ramos on 5/22/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
+//
+
+#include "Shared.xcconfig"
+#include "Pods/Target Support Files/Pods/Pods.debug.xcconfig"
+
+CODE_SIGN_IDENTITY = 
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
+BUNDLE_IDENTIFIER = com.silverlogic.Drawables

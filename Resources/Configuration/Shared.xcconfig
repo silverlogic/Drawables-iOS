@@ -1,0 +1,10 @@
+//
+//  Shared.xcconfig
+//  Anypic
+//
+//  Created by Héctor Ramos on 5/22/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
+//
+
+APP_VERSION = 2.0
+BUILD_VERSION = 1

@@ -1,0 +1,11 @@
+//
+//  Private.xcconfig
+//  AnyPic
+//
+//  Created by Héctor Ramos on 5/22/12.
+//  Copyright (c) 2012 Parse. All rights reserved.
+//
+//  This file should be copied to Private.xcconfig -- do not add to repo
+
+// TestFlight Developer Token
+API_TOKEN = 

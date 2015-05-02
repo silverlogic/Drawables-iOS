@@ -1,0 +1,16 @@
+//
+//  Distribution.xcconfig
+//  Anypic
+//
+//  Created by Héctor Ramos on 6/25/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
+//
+
+#include "Shared.xcconfig"
+#include "Pods/Target Support Files/Pods/Pods.distribution.xcconfig"
+
+CODE_SIGN_IDENTITY = 
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution: Parse Inc
+BUNDLE_IDENTIFIER = com.silverlogic.Drawables
+
+BUILD_VERSION = 2.0
