@@ -9,6 +9,7 @@
 #import "PAPEditPhotoViewController.h"
 #import "PAPPhotoDetailsFooterView.h"
 #import "UIImage+ResizeAdditions.h"
+#import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 
 @interface PAPEditPhotoViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -207,6 +208,16 @@
     self.photoPostBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
     }];
+    
+    if ([FBSDKMessengerSharer messengerPlatformCapabilities] & FBSDKMessengerPlatformCapabilityImage) {
+        [self.photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *shareImage = [UIImage imageWithData:data];
+                // image can now be set on a UIImageView
+                [FBSDKMessengerSharer shareImage:shareImage withOptions:nil];
+            }
+        }];
+    }
 
     // save
     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
