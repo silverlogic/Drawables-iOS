@@ -8,6 +8,6 @@ Team TSL
 
 - David
 - Cordell
-- Lauren
+- Lauren - https://www.facebook.com/lauren.culp
 - Regynald
 - Cristina
