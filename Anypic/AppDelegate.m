@@ -17,6 +17,7 @@
 #import "PAPWelcomeViewController.h"
 #import "PAPActivityFeedViewController.h"
 #import "PAPPhotoDetailsViewController.h"
+#import "ACEViewController.h"
 
 @interface AppDelegate () {
     BOOL firstLaunch;
@@ -179,10 +180,12 @@
     self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.homeViewController setFirstLaunch:firstLaunch];
     self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
-    
+	
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
-    UINavigationController *emptyNavigationController = [[UINavigationController alloc] init];
-    UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
+//	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:[ACEViewController new]];
+	ACEViewController *canvasViewController = [ACEViewController new];
+
+	UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
     
     UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", @"Home") image:[[UIImage imageNamed:@"IconHome.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"IconHomeSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
@@ -196,7 +199,8 @@
     [activityFeedNavigationController setTabBarItem:activityFeedTabBarItem];
     
     self.tabBarController.delegate = self;
-    self.tabBarController.viewControllers = @[ homeNavigationController, emptyNavigationController, activityFeedNavigationController];
+    self.tabBarController.viewControllers = @[ homeNavigationController, canvasViewController, activityFeedNavigationController];
+	self.tabBarController.selectedViewController = canvasViewController;
     
     [self.navController setViewControllers:@[ self.welcomeViewController, self.tabBarController ] animated:NO];
 
