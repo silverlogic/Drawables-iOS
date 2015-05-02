@@ -19,6 +19,7 @@
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		63273EDF1AF56866003DE608 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63273EDD1AF56866003DE608 /* .gitignore */; };
 		63273EE01AF56866003DE608 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63273EDE1AF56866003DE608 /* LICENSE */; };
+		63273EE21AF57434003DE608 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63273EE11AF57434003DE608 /* Storyboard.storyboard */; };
 		6A8214C1351C3110D3BB7520 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6ADC6E04D663DE26EB5105 /* libPods.a */; };
 		74636BF31578281E00B44132 /* PAPFindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74636BF21578281E00B44132 /* PAPFindFriendsCell.m */; };
 		747FC485156FFF74003349E1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 747FC484156FFF74003349E1 /* PAPConstants.m */; };
@@ -167,6 +168,7 @@
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		63273EDD1AF56866003DE608 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		63273EDE1AF56866003DE608 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		63273EE11AF57434003DE608 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		74636BF11578281E00B44132 /* PAPFindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PAPFindFriendsCell.h; path = AnyPic/PAPFindFriendsCell.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		74636BF21578281E00B44132 /* PAPFindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PAPFindFriendsCell.m; path = AnyPic/PAPFindFriendsCell.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		747FC484156FFF74003349E1 /* PAPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAPConstants.m; path = AnyPic/PAPConstants.m; sourceTree = SOURCE_ROOT; };
@@ -429,6 +431,7 @@
 				C4A89496155879F600DC57D3 /* Controllers */,
 				C4F1028C156C571A0061BC3E /* AppDelegate.h */,
 				C4F1028D156C571B0061BC3E /* AppDelegate.m */,
+				63273EE11AF57434003DE608 /* Storyboard.storyboard */,
 				C4F1028E156C571B0061BC3E /* PAPConstants.h */,
 				747FC484156FFF74003349E1 /* PAPConstants.m */,
 				C4F1028F156C571B0061BC3E /* PAPUtility.h */,
@@ -798,6 +801,7 @@
 				C4F101F4156C2D800061BC3E /* ActivityFeedBlank.png in Resources */,
 				C4F101F5156C2D800061BC3E /* ActivityFeedBlank@2x.png in Resources */,
 				C4F101F6156C2D800061BC3E /* HomeTimelineBlank.png in Resources */,
+				63273EE21AF57434003DE608 /* Storyboard.storyboard in Resources */,
 				C4F101F7156C2D800061BC3E /* HomeTimelineBlank@2x.png in Resources */,
 				C4F101FC156C35EE0061BC3E /* CellLoadMore.png in Resources */,
 				C4F101FD156C35EE0061BC3E /* CellLoadMore@2x.png in Resources */,
