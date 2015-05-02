@@ -20,6 +20,10 @@
 		63273EDF1AF56866003DE608 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63273EDD1AF56866003DE608 /* .gitignore */; };
 		63273EE01AF56866003DE608 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63273EDE1AF56866003DE608 /* LICENSE */; };
 		6A8214C1351C3110D3BB7520 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6ADC6E04D663DE26EB5105 /* libPods.a */; };
+		6B23FB8C1AF57B43004CCFC7 /* ACEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B23FB891AF57B43004CCFC7 /* ACEViewController.m */; };
+		6B23FB8D1AF57B43004CCFC7 /* ACEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B23FB8A1AF57B43004CCFC7 /* ACEViewController.xib */; };
+		6B23FB991AF57C7D004CCFC7 /* ACEDrawingTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B23FB961AF57C7D004CCFC7 /* ACEDrawingTools.m */; };
+		6B23FB9A1AF57C7D004CCFC7 /* ACEDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B23FB981AF57C7D004CCFC7 /* ACEDrawingView.m */; };
 		74636BF31578281E00B44132 /* PAPFindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74636BF21578281E00B44132 /* PAPFindFriendsCell.m */; };
 		747FC485156FFF74003349E1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 747FC484156FFF74003349E1 /* PAPConstants.m */; };
 		74B108A7156D7509005B421C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B108A6156D7509005B421C /* AddressBookUI.framework */; };
@@ -167,6 +171,13 @@
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		63273EDD1AF56866003DE608 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		63273EDE1AF56866003DE608 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6B23FB881AF57B43004CCFC7 /* ACEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEViewController.h; sourceTree = "<group>"; };
+		6B23FB891AF57B43004CCFC7 /* ACEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEViewController.m; sourceTree = "<group>"; };
+		6B23FB8A1AF57B43004CCFC7 /* ACEViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACEViewController.xib; sourceTree = "<group>"; };
+		6B23FB951AF57C7D004CCFC7 /* ACEDrawingTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEDrawingTools.h; sourceTree = "<group>"; };
+		6B23FB961AF57C7D004CCFC7 /* ACEDrawingTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDrawingTools.m; sourceTree = "<group>"; };
+		6B23FB971AF57C7D004CCFC7 /* ACEDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEDrawingView.h; sourceTree = "<group>"; };
+		6B23FB981AF57C7D004CCFC7 /* ACEDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDrawingView.m; sourceTree = "<group>"; };
 		74636BF11578281E00B44132 /* PAPFindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PAPFindFriendsCell.h; path = AnyPic/PAPFindFriendsCell.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		74636BF21578281E00B44132 /* PAPFindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PAPFindFriendsCell.m; path = AnyPic/PAPFindFriendsCell.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		747FC484156FFF74003349E1 /* PAPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAPConstants.m; path = AnyPic/PAPConstants.m; sourceTree = SOURCE_ROOT; };
@@ -465,6 +476,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6B23FB941AF57C7D004CCFC7 /* ACEDrawingView */ = {
+			isa = PBXGroup;
+			children = (
+				6B23FB951AF57C7D004CCFC7 /* ACEDrawingTools.h */,
+				6B23FB961AF57C7D004CCFC7 /* ACEDrawingTools.m */,
+				6B23FB971AF57C7D004CCFC7 /* ACEDrawingView.h */,
+				6B23FB981AF57C7D004CCFC7 /* ACEDrawingView.m */,
+			);
+			path = ACEDrawingView;
+			sourceTree = "<group>";
+		};
+		6B23FB9B1AF57C96004CCFC7 /* Draw */ = {
+			isa = PBXGroup;
+			children = (
+				6B23FB881AF57B43004CCFC7 /* ACEViewController.h */,
+				6B23FB891AF57B43004CCFC7 /* ACEViewController.m */,
+				6B23FB8A1AF57B43004CCFC7 /* ACEViewController.xib */,
+			);
+			name = Draw;
+			sourceTree = "<group>";
+		};
 		7460D3AD1565557A00F755E4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +672,7 @@
 		C4A89496155879F600DC57D3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6B23FB9B1AF57C96004CCFC7 /* Draw */,
 				74A504E51565F17E00CFA4E3 /* Login */,
 				C4A894921558795F00DC57D3 /* Home */,
 				C4A894941558796C00DC57D3 /* Take Photo */,
@@ -655,6 +688,7 @@
 		C4A89497155879FC00DC57D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6B23FB941AF57C7D004CCFC7 /* ACEDrawingView */,
 				74A504E31565F0E400CFA4E3 /* TimelineViews */,
 				74B86B911562DB2600CAFFD2 /* PhotoDetailsViews */,
 				74A504E21565F0C200CFA4E3 /* UITableViewCells */,
@@ -871,6 +905,7 @@
 				C4BE67C3157FC7F700A291C2 /* TitleFindFriends.png in Resources */,
 				C4BE67C4157FC7F700A291C2 /* TitleFindFriends@2x.png in Resources */,
 				C4BE67C7157FC8F600A291C2 /* TextFieldComment.png in Resources */,
+				6B23FB8D1AF57B43004CCFC7 /* ACEViewController.xib in Resources */,
 				C4BE67C8157FC8F600A291C2 /* TextFieldComment@2x.png in Resources */,
 				E734204819019BFD00821150 /* AvatarPlaceholderBig@2x.png in Resources */,
 				63273EE01AF56866003DE608 /* LICENSE in Resources */,
@@ -944,6 +979,7 @@
 				C4F10291156C571C0061BC3E /* AppDelegate.m in Sources */,
 				C4F10292156C571C0061BC3E /* PAPUtility.m in Sources */,
 				C4F102A0156C574A0061BC3E /* PAPImageView.m in Sources */,
+				6B23FB9A1AF57C7D004CCFC7 /* ACEDrawingView.m in Sources */,
 				C4F102A1156C574A0061BC3E /* PAPProfileImageView.m in Sources */,
 				E7ADD51A17BEA36500E975E2 /* UIImage+AlphaAdditions.m in Sources */,
 				C4F102A4156C57560061BC3E /* PAPPhotoHeaderView.m in Sources */,
@@ -957,11 +993,13 @@
 				C4F102BC156C57CD0061BC3E /* PAPTabBarController.m in Sources */,
 				C4F102C2156C57DA0061BC3E /* PAPLogInViewController.m in Sources */,
 				C4F102C3156C57DA0061BC3E /* PAPWelcomeViewController.m in Sources */,
+				6B23FB991AF57C7D004CCFC7 /* ACEDrawingTools.m in Sources */,
 				C4F102CB156C57EE0061BC3E /* PAPActivityFeedViewController.m in Sources */,
 				E7ADD51B17BEA36800E975E2 /* UIImage+ResizeAdditions.m in Sources */,
 				C4F102CC156C57EE0061BC3E /* PAPHomeViewController.m in Sources */,
 				C4F102CD156C57EE0061BC3E /* PAPPhotoTimelineViewController.m in Sources */,
 				C4F102D2156C57FD0061BC3E /* PAPAccountViewController.m in Sources */,
+				6B23FB8C1AF57B43004CCFC7 /* ACEViewController.m in Sources */,
 				E7ADD51C17BEA36B00E975E2 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				C4F102D3156C57FD0061BC3E /* PAPPhotoDetailsViewController.m in Sources */,
 				C4F102D8156C580C0061BC3E /* PAPFindFriendsViewController.m in Sources */,
