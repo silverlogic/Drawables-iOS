@@ -9,5 +9,5 @@ Team TSL
 - David
 - Cordell
 - Lauren
-- Regynald
+- Regynald:http://twitter.com/negroprogrammer raugustin95@gmail.com
 - Cristina
