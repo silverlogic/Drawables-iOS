@@ -24,6 +24,10 @@ typedef enum {
 // Chris    558159381
 // Matt     723748661
 
+#define isMiniOS(iOSVersion) ([[UIDevice currentDevice].systemVersion floatValue] >= iOSVersion)
+#define isiOS7 isMiniOS(7)
+#define isiOS8 isMiniOS(8)
+
 #define kPAPParseEmployeeAccounts [NSArray arrayWithObjects:@"400680", @"403902", @"1225726", @"4806789", @"6409809", @"12800553", @"121800083", @"500011038", @"558159381", @"723748661", nil]
 
 #pragma mark - NSUserDefaults
