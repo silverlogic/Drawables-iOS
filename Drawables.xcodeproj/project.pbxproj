@@ -321,7 +321,7 @@
 		C4F102EC156C58E00061BC3E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		C4F102ED156C58E00061BC3E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
 		E71D17E41A2E95470099D2C8 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		E72AA8321A3536D1001A3313 /* Anypic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Anypic.entitlements; path = Anypic/Anypic.entitlements; sourceTree = SOURCE_ROOT; };
+		E72AA8321A3536D1001A3313 /* Drawables.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Drawables.entitlements; path = Anypic/Drawables.entitlements; sourceTree = SOURCE_ROOT; };
 		E734204519019BFD00821150 /* AvatarPlaceholderBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AvatarPlaceholderBig.png; sourceTree = "<group>"; };
 		E734204619019BFD00821150 /* AvatarPlaceholderBig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AvatarPlaceholderBig@2x.png"; sourceTree = "<group>"; };
 		E77D8A351A2EA1060039D40D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Anypic/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -448,7 +448,7 @@
 			children = (
 				63273EDD1AF56866003DE608 /* .gitignore */,
 				63273EDE1AF56866003DE608 /* LICENSE */,
-				E72AA8321A3536D1001A3313 /* Anypic.entitlements */,
+				E72AA8321A3536D1001A3313 /* Drawables.entitlements */,
 				C4F102EB156C58E00061BC3E /* Info.plist */,
 				C4F102EC156C58E00061BC3E /* main.m */,
 				C4F102ED156C58E00061BC3E /* Prefix.pch */,
