@@ -81,7 +81,6 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     }
     
     // init share button
-    
     //Define the size of the circular button at creation time
     CGFloat buttonWidth = 50;
     CGFloat padding = 5.0f;
@@ -141,6 +140,10 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 - (void)shareWithMessenger {
     if ([FBSDKMessengerSharer messengerPlatformCapabilities] & FBSDKMessengerPlatformCapabilityImage) {
         [FBSDKMessengerSharer shareImage:self.drawingView.image withOptions:nil];
+    } else {
+        // Messenger isn't installed. Redirect the person to the App Store.
+        NSString *appStoreLink = @"https://itunes.apple.com/us/app/facebook-messenger/id454638411?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreLink]];
     }
 }
 
