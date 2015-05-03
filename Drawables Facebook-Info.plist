@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Drawables</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
@@ -35,7 +35,7 @@
 			<string>Icon@2x</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb976463495720877original</string>
+				<string>fb976463495720877fb</string>
 			</array>
 		</dict>
 		<dict>
@@ -63,10 +63,10 @@
 	<string>${APP_VERSION}</string>
 	<key>FacebookAppID</key>
 	<string>976463495720877</string>
-	<key>FacebookUrlSchemeSuffix</key>
-	<string>original</string>
 	<key>FacebookDisplayName</key>
 	<string>Drawables</string>
+	<key>FacebookUrlSchemeSuffix</key>
+	<string>fb</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.photography</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -100,7 +100,7 @@
 				<key>Blue</key>
 				<real>0.117841511964798</real>
 				<key>Green</key>
-				<real>0.1536859273910522</real>
+				<real>0.15368592739105219</real>
 				<key>Red</key>
 				<real>0.2008436918258667</real>
 			</dict>
