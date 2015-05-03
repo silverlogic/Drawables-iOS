@@ -16,7 +16,8 @@
 @property (nonatomic, unsafe_unretained) IBOutlet ACEDrawingView *drawingView;
 @property (nonatomic, unsafe_unretained) IBOutlet UISlider *lineWidthSlider;
 @property (nonatomic, unsafe_unretained) IBOutlet UISlider *lineAlphaSlider;
-@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *previewImageView;
+@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *previewImage;
+@property (nonatomic, strong) UIImage *backgroundImage;
 
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *undoButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *redoButton;

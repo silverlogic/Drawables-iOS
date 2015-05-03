@@ -7,6 +7,7 @@
 //
 
 #import "PAPTabBarController.h"
+#import "ACEViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, UITabBarControllerDelegate>
 
@@ -14,6 +15,7 @@
 
 @property (nonatomic, strong) PAPTabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) ACEViewController *canvasViewController;
 
 @property (nonatomic, readonly) int networkStatus;
 
