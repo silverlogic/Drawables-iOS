@@ -131,9 +131,9 @@
                                 </button>
                                 <button opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtZ-KP-YEt" userLabel="random">
                                     <rect key="frame" x="177" y="0.0" width="35.5" height="61"/>
-                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="41"/>
-                                    <state key="normal" title="?">
-                                        <color key="titleColor" red="0.906896174" green="0.17691278299999999" blue="0.3624248431" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="41"/>
+                                    <state key="normal" title="?" backgroundImage="mysterycolor">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -389,6 +389,7 @@
     <resources>
         <image name="brush" width="40" height="40"/>
         <image name="eraser" width="40" height="40"/>
+        <image name="mysterycolor" width="170" height="170"/>
         <image name="pen" width="40" height="40"/>
         <image name="pencil" width="40" height="40"/>
     </resources>
