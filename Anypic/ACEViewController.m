@@ -116,13 +116,6 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	self.undoButton.enabled = [self.drawingView canUndo];
 	self.redoButton.enabled = [self.drawingView canRedo];
 }
-- (void)cameraActionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 0) {
-		[self shouldStartCameraController];
-	} else if (buttonIndex == 1) {
-		[self shouldStartPhotoLibraryPickerController];
-	}
-}
 
 - (IBAction)addBackground:(id)sender {
 	BOOL cameraDeviceAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
@@ -378,8 +371,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 
 #pragma mark - ACEDrawing View Delegate
 //edit this to respond to the tool picker labels
-- (void)drawingView:(ACEDrawingView *)view didEndDrawUsingTool:(id<ACEDrawingTool>)tool;
-{
+- (void)drawingView:(ACEDrawingView *)view didEndDrawUsingTool:(id<ACEDrawingTool>)tool {
 	[self updateButtonStatus];
 }
 
@@ -422,48 +414,17 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 
 #pragma mark - Action Sheet Delegate
 //edit this to respond to the tool picker labels
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	self.toolButton.title = [actionSheet buttonTitleAtIndex:buttonIndex];
-	switch (buttonIndex) {
-		case 0:
-			self.drawingView.drawTool = ACEDrawingToolTypePen;
-			break;
-			
-		case 1:
-			self.drawingView.drawTool = ACEDrawingToolTypeLine;
-			break;
-			
-		case 2:
-			self.drawingView.drawTool = ACEDrawingToolTypeRectagleStroke;
-			break;
-			
-		case 3:
-			self.drawingView.drawTool = ACEDrawingToolTypeRectagleFill;
-			break;
-			
-		case 4:
-			self.drawingView.drawTool = ACEDrawingToolTypeEllipseStroke;
-			break;
-			
-		case 5:
-			self.drawingView.drawTool = ACEDrawingToolTypeEllipseFill;
-			break;
-			
-		case 6:
-			self.drawingView.drawTool = ACEDrawingToolTypeEraser;
-			break;
-			
-		case 7:
-			self.drawingView.drawTool = ACEDrawingToolTypeText;
-			break;
-	}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self shouldStartCameraController];
+    } else if (buttonIndex == 1) {
+        [self shouldStartPhotoLibraryPickerController];
+    }
 }
 
 #pragma mark - Settings
 
-- (IBAction)toolChange:(id)sender
-{
+- (IBAction)toolChange:(id)sender {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Selet a tool"
 															 delegate:self
 													cancelButtonTitle:@"Cancel"
@@ -478,20 +439,17 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	[actionSheet showInView:self.view];
 }
 
-- (IBAction)toggleWidthSlider:(id)sender
-{
+- (IBAction)toggleWidthSlider:(id)sender {
 	// toggle the slider
 	self.lineWidthSlider.hidden = !self.lineWidthSlider.hidden;
 	self.lineAlphaSlider.hidden = YES;
 }
 
-- (IBAction)widthChange:(UISlider *)sender
-{
+- (IBAction)widthChange:(UISlider *)sender {
 	self.drawingView.lineWidth = sender.value;
 }
 
-- (IBAction)alphaChange:(UISlider *)sender
-{
+- (IBAction)alphaChange:(UISlider *)sender {
 	self.drawingView.lineAlpha = sender.value;
 	[self matchColor];
 }
