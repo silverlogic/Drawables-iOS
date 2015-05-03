@@ -19,6 +19,7 @@
 #import "PAPPhotoDetailsViewController.h"
 #import "ACEViewController.h"
 #import <Crashlytics/Crashlytics.h>
+#import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 
 @interface AppDelegate () {
     BOOL firstLaunch;
@@ -30,6 +31,7 @@
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSTimer *autoFollowTimer;
+@property (nonatomic, strong) FBSDKMessengerURLHandler *messengerUrlHandler;
 
 - (void)setupAppearance;
 - (BOOL)shouldProceedToMainInterface:(PFUser *)user;
@@ -64,6 +66,8 @@
     // Enable public read access by default, with any newly created PFObjects belonging to the current user
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    self.messengerUrlHandler = [[FBSDKMessengerURLHandler alloc] init];
 
     // Set up our app's global UIAppearance
     [self setupAppearance];
@@ -91,6 +95,12 @@
         wasHandled |= [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
     } else {
         wasHandled |= [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    }
+    
+    self.messengerUrlHandler = [[FBSDKMessengerURLHandler alloc] init];
+    if ([self.messengerUrlHandler canOpenURL:url sourceApplication:sourceApplication]) {
+        // Handle the url
+        wasHandled |= [self.messengerUrlHandler openURL:url sourceApplication:sourceApplication];
     }
     
     wasHandled |= [self handleActionURL:url];
