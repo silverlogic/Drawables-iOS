@@ -10,6 +10,7 @@
 
 @class ACEDrawingView;
 
+
 @interface ACEViewController : UIViewController
 
 @property (nonatomic, unsafe_unretained) IBOutlet ACEDrawingView *drawingView;
@@ -48,6 +49,7 @@
 // new tool actions - Keep
 
 // actions
+- (BOOL)shouldPresentPhotoCaptureController;
 - (IBAction)undo:(id)sender;
 - (IBAction)redo:(id)sender;
 - (IBAction)clear:(id)sender;
