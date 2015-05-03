@@ -458,4 +458,14 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	[self matchColor];
 }
 
+#pragma mark - Action Sheet Delegate
+//edit this to respond to the tool picker labels
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self shouldStartCameraController];
+    } else if (buttonIndex == 1) {
+        [self shouldStartPhotoLibraryPickerController];
+    }
+}
+
 @end
