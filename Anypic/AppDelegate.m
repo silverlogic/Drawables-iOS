@@ -193,11 +193,10 @@
     self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.homeViewController setFirstLaunch:firstLaunch];
     self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
+	self.canvasViewController = [ACEViewController new];
 	
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
-	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:[ACEViewController new]];
-//	ACEViewController *canvasViewController = [ACEViewController new];
-
+	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:self.canvasViewController];
 	UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
     
     UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", @"Home") image:[[UIImage imageNamed:@"IconHome.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"IconHomeSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

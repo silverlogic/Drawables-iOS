@@ -109,6 +109,13 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     self.shareButton.hidden = YES;
 }
 
+#pragma mark - Setters
+- (void)setBackgroundImage:(UIImage *)backgroundImage {
+	_backgroundImage = backgroundImage;
+	
+	[self.drawingView loadImage:backgroundImage];
+}
+
 #pragma mark - Actions
 - (void)updateButtonStatus
 {

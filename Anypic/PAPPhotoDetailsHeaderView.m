@@ -176,7 +176,6 @@ static TTTTimeIntervalFormatter *timeFormatter;
         [profilePic setFrame:CGRectMake(likeProfileXBase + i * (likeProfileXSpace + likeProfileDim), likeProfileY, likeProfileDim, likeProfileDim)];
         [profilePic.profileButton addTarget:self action:@selector(didTapLikerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         profilePic.profileButton.tag = i;
-
         
         if ([PAPUtility userHasProfilePictures:[self.likeUsers objectAtIndex:i]]) {
             [profilePic setFile:[[self.likeUsers objectAtIndex:i] objectForKey:kPAPUserProfilePicSmallKey]];
