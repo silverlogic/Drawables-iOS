@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -86,10 +86,10 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="140"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-DU-vBW" userLabel="Color Picker View">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                             <subviews>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iW-oG-GHB" userLabel="Red">
-                                    <rect key="frame" x="0.0" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="47"/>
                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,7 +99,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXh-Or-K2O" userLabel="Orange">
-                                    <rect key="frame" x="35" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="35" y="0.0" width="36" height="47"/>
                                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,7 +109,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFH-Cf-oGV" userLabel="Yellow">
-                                    <rect key="frame" x="71" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="71" y="0.0" width="35" height="47"/>
                                     <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,7 +119,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSv-T2-rdX" userLabel="Green">
-                                    <rect key="frame" x="106" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="106" y="0.0" width="36" height="47"/>
                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,7 +129,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hch-Nt-SZa" userLabel="Blue">
-                                    <rect key="frame" x="142" y="0.0" width="35" height="46.5"/>
+                                    <rect key="frame" x="142" y="0.0" width="35" height="47"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +139,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtZ-KP-YEt" userLabel="random">
-                                    <rect key="frame" x="177" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="177" y="0.0" width="36" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="41"/>
                                     <state key="normal" title="?">
                                         <color key="titleColor" red="0.906896174" green="0.17691278299999999" blue="0.3624248431" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,7 +150,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBN-EK-0rD" userLabel="Purple">
-                                    <rect key="frame" x="212" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="213" y="0.0" width="35" height="47"/>
                                     <color key="backgroundColor" red="0.4823529412" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleColor" red="0.4823529412" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -161,7 +161,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCw-vt-hv1" userLabel="Brown">
-                                    <rect key="frame" x="248" y="0.0" width="35.5" height="46.5"/>
+                                    <rect key="frame" x="248" y="0.0" width="36" height="47"/>
                                     <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,7 +171,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nah-dH-gJL" userLabel="Black">
-                                    <rect key="frame" x="283" y="0.0" width="36.5" height="46.5"/>
+                                    <rect key="frame" x="284" y="0.0" width="36" height="47"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,7 +226,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7s-dS-cui" userLabel="Color Modifiers">
-                            <rect key="frame" x="0.0" y="46" width="320" height="46.5"/>
+                            <rect key="frame" x="0.0" y="47" width="320" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thickness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3y-hY-DuB" userLabel="thickness Slider Label">
                                     <rect key="frame" x="0.0" y="17" width="80" height="13"/>
@@ -272,10 +272,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbK-jQ-i8h" userLabel="Drawing Tools View">
-                            <rect key="frame" x="0.0" y="93" width="320" height="46.5"/>
+                            <rect key="frame" x="0.0" y="93" width="320" height="47"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQe-Si-6h2">
-                                    <rect key="frame" x="8" y="0.0" width="46.5" height="46.5"/>
+                                    <rect key="frame" x="8" y="0.0" width="47" height="47"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="xQe-Si-6h2" secondAttribute="height" multiplier="1:1" id="cmg-s3-Yhl"/>
@@ -285,25 +285,25 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-BW-xp4" userLabel="Pen Icon">
-                                    <rect key="frame" x="62" y="0.0" width="46.5" height="46.5"/>
+                                    <rect key="frame" x="63" y="0.0" width="46" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="f8U-BW-xp4" secondAttribute="height" multiplier="1:1" id="XOQ-Bs-hgm"/>
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIw-UX-men" userLabel="Pencil Icon">
-                                    <rect key="frame" x="114" y="0.0" width="46.5" height="46.5"/>
+                                    <rect key="frame" x="114" y="0.0" width="47" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="JIw-UX-men" secondAttribute="height" multiplier="1:1" id="fxf-LG-ju3"/>
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bFe-eJ-Jhm" userLabel="Stamp Icon">
-                                    <rect key="frame" x="168" y="0.0" width="46.5" height="46.5"/>
+                                    <rect key="frame" x="169" y="0.0" width="47" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="bFe-eJ-Jhm" secondAttribute="height" multiplier="1:1" id="4JF-in-ygR"/>
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvy-84-08D" userLabel="Eraser Icon">
-                                    <rect key="frame" x="265" y="0.0" width="46.5" height="46.5"/>
+                                    <rect key="frame" x="265" y="0.0" width="47" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="bvy-84-08D" secondAttribute="height" multiplier="1:1" id="efi-ve-HS1"/>
                                     </constraints>
