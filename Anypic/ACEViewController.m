@@ -254,6 +254,30 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     
     return YES;
 }
+- (IBAction)usePen:(id)sender {
+	self.drawingView.drawTool = ACEDrawingToolTypePen;
+	self.drawingView.lineWidth = 6;
+	self.drawingView.lineAlpha = 1;
+	[self matchColor];
+}
+
+- (IBAction)usePencil:(id)sender {
+	self.drawingView.drawTool = ACEDrawingToolTypePen;
+	self.drawingView.lineWidth = 3;
+	self.drawingView.lineAlpha = .75;
+	[self matchColor];
+}
+
+- (IBAction)useBrush:(id)sender {
+	self.drawingView.drawTool = ACEDrawingToolTypePen;
+	self.drawingView.lineWidth = 20;
+	self.drawingView.lineAlpha = .5;
+	[self matchColor];
+}
+
+- (IBAction)useEraser:(id)sender {
+	self.drawingView.drawTool = ACEDrawingToolTypeEraser;
+}
 
 - (BOOL)shouldPresentPhotoCaptureController {
 	BOOL presentedPhotoCaptureController = [self shouldStartCameraController];
@@ -410,33 +434,6 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
         default:
             return [UIColor blackColor];
     }
-}
-
-#pragma mark - Action Sheet Delegate
-//edit this to respond to the tool picker labels
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self shouldStartCameraController];
-    } else if (buttonIndex == 1) {
-        [self shouldStartPhotoLibraryPickerController];
-    }
-}
-
-#pragma mark - Settings
-
-- (IBAction)toolChange:(id)sender {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Selet a tool"
-															 delegate:self
-													cancelButtonTitle:@"Cancel"
-											   destructiveButtonTitle:nil
-													otherButtonTitles:@"Pen", @"Line",
-								  @"Rect (Stroke)", @"Rect (Fill)",
-								  @"Ellipse (Stroke)", @"Ellipse (Fill)",
-								  @"Eraser", @"Text",
-								  nil];
-	
-	[actionSheet setTag:kActionSheetTool];
-	[actionSheet showInView:self.view];
 }
 
 - (IBAction)toggleWidthSlider:(id)sender {

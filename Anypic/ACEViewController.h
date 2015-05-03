@@ -22,18 +22,8 @@
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *redoButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *clearButton;
 
-@property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *colorButton;
-@property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *toolButton;
-@property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *alphaButton;
-
 // current color
 @property (weak, nonatomic) IBOutlet UILabel *current;
-
-// new tool images - Keep
-@property (weak, nonatomic) IBOutlet UIImageView *pen;
-@property (weak, nonatomic) IBOutlet UIImageView *pencil;
-@property (weak, nonatomic) IBOutlet UIImageView *stamp;
-@property (weak, nonatomic) IBOutlet UIImageView *eraser;
 
 // color buttons
 @property (weak, nonatomic) IBOutlet UIButton *red;
@@ -54,9 +44,12 @@
 - (IBAction)redo:(id)sender;
 - (IBAction)clear:(id)sender;
 - (IBAction)addBackground:(id)sender;
+- (IBAction)usePen:(id)sender;
+- (IBAction)usePencil:(id)sender;
+- (IBAction)useBrush:(id)sender;
+- (IBAction)useEraser:(id)sender;
 
 // settings
-- (IBAction)toolChange:(id)sender;
 - (IBAction)widthChange:(UISlider *)sender;
 - (IBAction)alphaChange:(UISlider *)sender;
 
