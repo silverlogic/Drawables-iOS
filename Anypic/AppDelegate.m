@@ -203,7 +203,7 @@
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateNormal];
     
-    UITabBarItem *canvasTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Draw", @"Draw") image:[[UIImage imageNamed:@"ButtonCamera.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage new]];
+    UITabBarItem *canvasTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Draw", @"Draw") image:[[UIImage imageNamed:@"drawbar"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage new]];
     canvasTabBarItem.title = @"";
     canvasTabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     
