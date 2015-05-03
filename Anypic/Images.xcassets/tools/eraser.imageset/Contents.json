@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "drawbar.png"
+      "filename" : "eraser.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "drawbar@2x.png"
+      "filename" : "eraser@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "drawbar@3x.png"
+      "filename" : "eraser@3x.png"
     }
   ],
   "info" : {
