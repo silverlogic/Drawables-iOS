@@ -8,6 +8,10 @@
 
 #import "ACEViewController.h"
 #import "ACEDrawingView.h"
+#import "PAPEditPhotoViewController.h"
+#import "PAPPhotoDetailsFooterView.h"
+#import "UIImage+ResizeAdditions.h"
+#import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -27,7 +31,11 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	PaintColorBlack
 };
 
-@interface ACEViewController ()<UIActionSheetDelegate, ACEDrawingViewDelegate>
+@interface ACEViewController ()<UIActionSheetDelegate, ACEDrawingViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) PFFile *photoFile;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
 
 @property (nonatomic, strong) NSArray *colorButtons;
 
@@ -82,12 +90,103 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	self.undoButton.enabled = [self.drawingView canUndo];
 	self.redoButton.enabled = [self.drawingView canRedo];
 }
+- (void)cameraActionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[self shouldStartCameraController];
+	} else if (buttonIndex == 1) {
+		[self shouldStartPhotoLibraryPickerController];
+	}
+}
 
 - (IBAction)takeScreenshot:(id)sender
 {
-	// send image logic here
+	BOOL cameraDeviceAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+	BOOL photoLibraryAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
 	
+	if (cameraDeviceAvailable && photoLibraryAvailable) {
+		UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
+		[cameraSheet showFromTabBar:self.tabBarController.tabBar];
+	} else {
+		// if we don't have at least two options, we automatically show whichever is available (camera or roll)
+		[self shouldPresentPhotoCaptureController];
+	}
 }
+
+- (BOOL)shouldPresentPhotoCaptureController {
+	BOOL presentedPhotoCaptureController = [self shouldStartCameraController];
+	
+	if (!presentedPhotoCaptureController) {
+		presentedPhotoCaptureController = [self shouldStartPhotoLibraryPickerController];
+	}
+	
+	return presentedPhotoCaptureController;
+}
+
+- (BOOL)shouldStartPhotoLibraryPickerController {
+	if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == NO
+		 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] == NO)) {
+		return NO;
+	}
+	
+	UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]
+		&& [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary] containsObject:(NSString *)kUTTypeImage]) {
+		
+		cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+		cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+		
+	} else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]
+			   && [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum] containsObject:(NSString *)kUTTypeImage]) {
+		
+		cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+		cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+		
+	} else {
+		return NO;
+	}
+	
+	cameraUI.allowsEditing = YES;
+	cameraUI.delegate = self;
+	
+	[self presentViewController:cameraUI animated:YES completion:nil];
+	
+	return YES;
+}
+
+- (BOOL)shouldStartCameraController {
+	
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) {
+		return NO;
+	}
+	
+	UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+	
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]
+		&& [[UIImagePickerController availableMediaTypesForSourceType:
+			 UIImagePickerControllerSourceTypeCamera] containsObject:(NSString *)kUTTypeImage]) {
+		
+		cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+		cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+		
+		if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
+			cameraUI.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+		} else if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+			cameraUI.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+		}
+		
+	} else {
+		return NO;
+	}
+	
+	cameraUI.allowsEditing = YES;
+	cameraUI.showsCameraControls = YES;
+	cameraUI.delegate = self;
+	
+	[self presentViewController:cameraUI animated:YES completion:nil];
+	
+	return YES;
+}
+
 
 - (IBAction)undo:(id)sender
 {
@@ -107,6 +206,25 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	[self updateButtonStatus];
 }
 
+#pragma mark - UIImagePickerDelegate
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	
+	UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+	
+	PAPEditPhotoViewController *viewController = [[PAPEditPhotoViewController alloc] initWithImage:image];
+	[viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+	
+	[self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		[self.drawingView loadImage:image];
+	}];
+}
 
 #pragma mark - ACEDrawing View Delegate
 //edit this to respond to the tool picker labels
