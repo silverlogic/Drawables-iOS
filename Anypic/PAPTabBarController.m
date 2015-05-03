@@ -47,13 +47,13 @@
     cameraButton.frame = CGRectMake( 94.0f, 0.0f, 131.0f, self.tabBar.bounds.size.height);
     [cameraButton setImage:[UIImage imageNamed:@"ButtonCamera.png"] forState:UIControlStateNormal];
     [cameraButton setImage:[UIImage imageNamed:@"ButtonCameraSelected.png"] forState:UIControlStateHighlighted];
-    [cameraButton addTarget:self action:@selector(photoCaptureButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.tabBar addSubview:cameraButton];
+//    [cameraButton addTarget:self action:@selector(photoCaptureButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.tabBar addSubview:cameraButton];
     
-    UISwipeGestureRecognizer *swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    [swipeUpGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
-    [swipeUpGestureRecognizer setNumberOfTouchesRequired:1];
-    [cameraButton addGestureRecognizer:swipeUpGestureRecognizer];
+//    UISwipeGestureRecognizer *swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    [swipeUpGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
+//    [swipeUpGestureRecognizer setNumberOfTouchesRequired:1];
+//    [cameraButton addGestureRecognizer:swipeUpGestureRecognizer];
 }
 
 

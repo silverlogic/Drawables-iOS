@@ -158,7 +158,7 @@
 
 - (BOOL)tabBarController:(UITabBarController *)aTabBarController shouldSelectViewController:(UIViewController *)viewController {
     // The empty UITabBarItem behind our Camera button should not load a view controller
-    return ![viewController isEqual:aTabBarController.viewControllers[PAPEmptyTabBarItemIndex]];
+    return YES; //![viewController isEqual:aTabBarController.viewControllers[PAPEmptyTabBarItemIndex]];
 }
 
 #pragma mark - AppDelegate
@@ -191,12 +191,18 @@
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateNormal];
     
+    UITabBarItem *canvasTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Draw", @"Draw") image:[[UIImage imageNamed:@"ButtonCamera.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"ButtonCameraSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    canvasTabBarItem.title = @"";
+    canvasTabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+    
+    
     UITabBarItem *activityFeedTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Activity", @"Activity") image:[[UIImage imageNamed:@"IconTimeline.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"IconTimelineSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [activityFeedTabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
     [activityFeedTabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateNormal];
     
-    [homeNavigationController setTabBarItem:homeTabBarItem];
-    [activityFeedNavigationController setTabBarItem:activityFeedTabBarItem];
+    homeNavigationController.tabBarItem = homeTabBarItem;
+    canvasViewController.tabBarItem = canvasTabBarItem;
+    activityFeedNavigationController.tabBarItem = activityFeedTabBarItem;
     
     self.tabBarController.delegate = self;
     self.tabBarController.viewControllers = @[ homeNavigationController, canvasViewController, activityFeedNavigationController];
