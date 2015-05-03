@@ -199,16 +199,20 @@
 	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:self.canvasViewController];
 	UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
     
-    UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", @"Home") image:[[UIImage imageNamed:@"IconHome.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"IconHomeSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", @"Home") image:[[UIImage imageNamed:@"home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    homeTabBarItem.title = @"";
+    homeTabBarItem.imageInsets = UIEdgeInsetsMake(10, 5, 0, 5);
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
     [homeTabBarItem setTitleTextAttributes: @{ NSForegroundColorAttributeName: [UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateNormal];
     
-    UITabBarItem *canvasTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Draw", @"Draw") image:[[UIImage imageNamed:@"ButtonCamera.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage new]];
+    UITabBarItem *canvasTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Draw", @"Draw") image:[[UIImage imageNamed:@"drawbar"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage new]];
     canvasTabBarItem.title = @"";
-    canvasTabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+    canvasTabBarItem.imageInsets = UIEdgeInsetsMake(10, 4, 0, 4);
     
     
-    UITabBarItem *activityFeedTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Activity", @"Activity") image:[[UIImage imageNamed:@"IconTimeline.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"IconTimelineSelected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    UITabBarItem *activityFeedTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Activity", @"Activity") image:[[UIImage imageNamed:@"activity"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"activity"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    activityFeedTabBarItem.title = @"";
+    activityFeedTabBarItem.imageInsets = UIEdgeInsetsMake(8, 4, 0, 4);
     [activityFeedTabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateSelected];
     [activityFeedTabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f], NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } forState:UIControlStateNormal];
     
@@ -267,23 +271,29 @@
 - (void)setupAppearance {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
+    [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0x074f66)];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x17baef)];
   
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                 NSForegroundColorAttributeName: [UIColor whiteColor]
                                 }];
 
     [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil]
-     setTitleColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]
-     forState:UIControlStateNormal];
+     setTitleColor:UIColorFromRGB(0x074f66) forState:UIControlStateNormal];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                NSForegroundColorAttributeName:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]
+                                NSForegroundColorAttributeName:UIColorFromRGB(0x074f66)
                                 }
                                 forState:UIControlStateNormal];
     
-    [[UISearchBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
+    [[UISearchBar appearance] setTintColor:UIColorFromRGB(0x074f66)];
+    
+    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0xeebf3f)];
+    [[UITabBar appearance] setTintColor:UIColorFromRGB(0xffffff)];
+//    [UITabBar appearance].barTintColor = [UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
+//    [UITabBar appearance].tintColor = [UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
 }
 
 - (void)monitorReachability {

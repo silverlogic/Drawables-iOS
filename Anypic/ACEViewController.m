@@ -232,7 +232,8 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     
     // JPEG to decrease file size and enable faster uploads & downloads
     NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
-    NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
+//    NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
+    NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, 0.8f);
     
     if (!imageData || !thumbnailImageData) {
         return NO;

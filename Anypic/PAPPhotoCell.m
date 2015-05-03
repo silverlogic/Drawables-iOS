@@ -38,8 +38,13 @@
         [self.contentView addSubview:self.photoButton];
 		
 		self.redoodleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		UIImage *btnImage = [UIImage imageNamed:@"drawbar"];
+
 		self.redoodleButton.frame = CGRectMake( 0.0f, 0.0f, self.bounds.size.width, self.bounds.size.width);
-		self.redoodleButton.backgroundColor = [UIColor greenColor];
+		//self.redoodleButton.frame.size = btnImage.size;
+		[self.redoodleButton setImage:btnImage forState:UIControlStateNormal];
+		self.redoodleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//		self.redoodleButton.backgroundColor = [UIColor greenColor];
 		[self.redoodleButton addTarget:self action:@selector(didTapRedoodlePhotoButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 		
 		[self.contentView addSubview:self.redoodleButton];
