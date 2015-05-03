@@ -88,6 +88,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     self.shareButton.frame = CGRectMake( self.tabBarController.tabBar.bounds.size.width / 2.0f - buttonHeight / 2.0f, padding / 2.0f, buttonHeight, buttonHeight);
     [self.shareButton addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
     [self.tabBarController.tabBar addSubview:self.shareButton];
+    self.shareButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -373,6 +374,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 {
 	[self.drawingView clear];
 	[self updateButtonStatus];
+    self.shareButton.enabled = NO;
 }
 
 #pragma mark - UIImagePickerDelegate
@@ -399,6 +401,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 //edit this to respond to the tool picker labels
 - (void)drawingView:(ACEDrawingView *)view didEndDrawUsingTool:(id<ACEDrawingTool>)tool {
 	[self updateButtonStatus];
+    self.shareButton.enabled = YES;
 }
 
 - (void)matchColor {
