@@ -35,7 +35,7 @@
 			<string>Icon@2x</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb976463495720877fb</string>
+				<string>fb976463495720877</string>
 			</array>
 		</dict>
 		<dict>
@@ -65,8 +65,6 @@
 	<string>976463495720877</string>
 	<key>FacebookDisplayName</key>
 	<string>Drawables</string>
-	<key>FacebookUrlSchemeSuffix</key>
-	<string>fb</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.photography</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -79,6 +77,8 @@
 	<array/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -100,7 +100,7 @@
 				<key>Blue</key>
 				<real>0.117841511964798</real>
 				<key>Green</key>
-				<real>0.15368592739105219</real>
+				<real>0.1536859273910522</real>
 				<key>Red</key>
 				<real>0.2008436918258667</real>
 			</dict>
