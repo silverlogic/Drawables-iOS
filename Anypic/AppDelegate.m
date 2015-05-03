@@ -267,23 +267,29 @@
 - (void)setupAppearance {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
+    [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0x074f66)];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x17baef)];
   
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                 NSForegroundColorAttributeName: [UIColor whiteColor]
                                 }];
 
     [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil]
-     setTitleColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]
-     forState:UIControlStateNormal];
+     setTitleColor:UIColorFromRGB(0x074f66) forState:UIControlStateNormal];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                NSForegroundColorAttributeName:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]
+                                NSForegroundColorAttributeName:UIColorFromRGB(0x074f66)
                                 }
                                 forState:UIControlStateNormal];
     
-    [[UISearchBar appearance] setTintColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]];
+    [[UISearchBar appearance] setTintColor:UIColorFromRGB(0x074f66)];
+    
+    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x074f66)];
+    [[UITabBar appearance] setTintColor:UIColorFromRGB(0xffffff)];
+//    [UITabBar appearance].barTintColor = [UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
+//    [UITabBar appearance].tintColor = [UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
 }
 
 - (void)monitorReachability {
