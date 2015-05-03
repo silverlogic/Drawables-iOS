@@ -19,9 +19,11 @@ All art was done by teammate Cordell, marketing page, product management, and UX
 
 iOS: this repository
 
-Marketing Page
+[Marketing Page](https://github.com/silverlogic/Drawables-Marketing)
 
-Web Admin
+[Web Admin](https://github.com/silverlogic/Drawables-React)
+
+https://github.com/silverlogic
 
 
 ## Resources
