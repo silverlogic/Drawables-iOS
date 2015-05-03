@@ -15,19 +15,14 @@
                 <outlet property="clearButton" destination="46" id="mx1-jL-LR6"/>
                 <outlet property="current" destination="xQe-Si-6h2" id="Xi7-7j-vv6"/>
                 <outlet property="drawingView" destination="39" id="59"/>
-                <outlet property="eraser" destination="bvy-84-08D" id="EaU-VC-ZUL"/>
                 <outlet property="green" destination="FSv-T2-rdX" id="2on-L1-xxV"/>
                 <outlet property="lineAlphaSlider" destination="65" id="67"/>
                 <outlet property="lineWidthSlider" destination="51" id="60"/>
                 <outlet property="orange" destination="zXh-Or-K2O" id="oS6-h6-FFR"/>
-                <outlet property="pen" destination="f8U-BW-xp4" id="XRH-eC-lhh"/>
-                <outlet property="pencil" destination="JIw-UX-men" id="m27-Yg-ovE"/>
                 <outlet property="purple" destination="ZBN-EK-0rD" id="oVh-0j-GEr"/>
                 <outlet property="random" destination="VtZ-KP-YEt" id="PDz-QX-2Ep"/>
                 <outlet property="red" destination="3iW-oG-GHB" id="Kuc-DA-P68"/>
                 <outlet property="redoButton" destination="49" id="70"/>
-                <outlet property="stamp" destination="bFe-eJ-Jhm" id="TWc-Qx-Eaa"/>
-                <outlet property="toolButton" destination="73" id="77"/>
                 <outlet property="undoButton" destination="50" id="71"/>
                 <outlet property="view" destination="6" id="7"/>
                 <outlet property="yellow" destination="LFH-Cf-oGV" id="qSm-Sk-N7c"/>
@@ -74,11 +69,6 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <items>
-                        <barButtonItem title="Pen" id="73">
-                            <connections>
-                                <action selector="toolChange:" destination="-1" id="75"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="43"/>
                     </items>
                 </toolbar>
@@ -231,7 +221,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thickness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3y-hY-DuB" userLabel="thickness Slider Label">
                                     <rect key="frame" x="0.0" y="17" width="80" height="13"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="11"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="51" userLabel="thickness Slider">
@@ -250,7 +240,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="transparency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j5-AI-mz3" userLabel="transparency Slider Label">
                                     <rect key="frame" x="160" y="17" width="80" height="13"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="11"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -281,51 +271,81 @@
                                         <constraint firstAttribute="width" secondItem="xQe-Si-6h2" secondAttribute="height" multiplier="1:1" id="cmg-s3-Yhl"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-BW-xp4" userLabel="Pen Icon">
-                                    <rect key="frame" x="63" y="0.0" width="47" height="47"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byg-1F-tZV" userLabel="Pen Button">
+                                    <rect key="frame" x="59" y="0.0" width="46" height="47"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="f8U-BW-xp4" secondAttribute="height" multiplier="1:1" id="XOQ-Bs-hgm"/>
+                                        <constraint firstAttribute="width" secondItem="byg-1F-tZV" secondAttribute="height" multiplier="1:1" id="FO8-ae-cAZ"/>
                                     </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIw-UX-men" userLabel="Pencil Icon">
-                                    <rect key="frame" x="115" y="0.0" width="46.5" height="46.5"/>
+                                    <state key="normal" title="Pen">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="usePen:" destination="-1" eventType="touchUpInside" id="lsA-e8-85Q"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ks3-cq-CcM" userLabel="Pencil Button">
+                                    <rect key="frame" x="109" y="0.0" width="47" height="47"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="JIw-UX-men" secondAttribute="height" multiplier="1:1" id="fxf-LG-ju3"/>
+                                        <constraint firstAttribute="width" secondItem="ks3-cq-CcM" secondAttribute="height" multiplier="1:1" id="0iW-Xg-lHq"/>
                                     </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bFe-eJ-Jhm" userLabel="Stamp Icon">
-                                    <rect key="frame" x="169" y="0.0" width="46.5" height="46.5"/>
+                                    <state key="normal" title="Pencil">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="usePencil:" destination="-1" eventType="touchUpInside" id="jjw-eB-d4T"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUd-7S-ADp" userLabel="Brush Button">
+                                    <rect key="frame" x="160" y="0.0" width="47" height="47"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="bFe-eJ-Jhm" secondAttribute="height" multiplier="1:1" id="4JF-in-ygR"/>
+                                        <constraint firstAttribute="width" secondItem="cUd-7S-ADp" secondAttribute="height" multiplier="1:1" id="eGW-Kc-hhE"/>
                                     </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvy-84-08D" userLabel="Eraser Icon">
-                                    <rect key="frame" x="265" y="0.0" width="46.5" height="46.5"/>
+                                    <state key="normal" title="Brush">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="useBrush:" destination="-1" eventType="touchUpInside" id="gTG-UD-9e0"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cS-Jw-NLH" userLabel="Eraser Button">
+                                    <rect key="frame" x="269" y="0.0" width="47" height="47"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="bvy-84-08D" secondAttribute="height" multiplier="1:1" id="efi-ve-HS1"/>
+                                        <constraint firstAttribute="width" secondItem="2cS-Jw-NLH" secondAttribute="height" multiplier="1:1" id="XPV-iE-Wbn"/>
                                     </constraints>
-                                </imageView>
+                                    <state key="normal" title="Eraser">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="useEraser:" destination="-1" eventType="touchUpInside" id="lAi-D9-IAU"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="xQe-Si-6h2" firstAttribute="leading" secondItem="AbK-jQ-i8h" secondAttribute="leading" constant="8" id="6LP-Du-82f"/>
-                                <constraint firstAttribute="height" secondItem="bFe-eJ-Jhm" secondAttribute="height" id="A0T-TP-H8U"/>
-                                <constraint firstItem="f8U-BW-xp4" firstAttribute="leading" secondItem="xQe-Si-6h2" secondAttribute="trailing" constant="8" id="AUH-Hh-iDv"/>
-                                <constraint firstAttribute="centerY" secondItem="f8U-BW-xp4" secondAttribute="centerY" id="JUR-RS-m1H"/>
-                                <constraint firstAttribute="centerY" secondItem="JIw-UX-men" secondAttribute="centerY" id="Mwn-Am-Uye"/>
+                                <constraint firstItem="byg-1F-tZV" firstAttribute="leading" secondItem="xQe-Si-6h2" secondAttribute="trailing" constant="4" id="81k-JM-EgN"/>
+                                <constraint firstAttribute="height" secondItem="2cS-Jw-NLH" secondAttribute="height" id="Hu7-ar-GKg"/>
+                                <constraint firstItem="cUd-7S-ADp" firstAttribute="leading" secondItem="ks3-cq-CcM" secondAttribute="trailing" constant="4" id="LL6-Oi-gOd"/>
+                                <constraint firstAttribute="trailing" secondItem="2cS-Jw-NLH" secondAttribute="trailing" constant="4" id="M9L-4l-obr"/>
+                                <constraint firstAttribute="height" secondItem="cUd-7S-ADp" secondAttribute="height" id="MVt-p1-iKw"/>
                                 <constraint firstAttribute="centerY" secondItem="xQe-Si-6h2" secondAttribute="centerY" id="Qmc-kw-fS6"/>
-                                <constraint firstItem="f8U-BW-xp4" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="ac9-By-DTX"/>
-                                <constraint firstItem="JIw-UX-men" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="bjc-Bk-Zjl"/>
+                                <constraint firstAttribute="centerY" secondItem="ks3-cq-CcM" secondAttribute="centerY" id="WeQ-bx-NSU"/>
+                                <constraint firstAttribute="centerY" secondItem="cUd-7S-ADp" secondAttribute="centerY" id="aKS-Sq-GX9"/>
+                                <constraint firstAttribute="centerY" secondItem="2cS-Jw-NLH" secondAttribute="centerY" id="bFh-BP-J38"/>
                                 <constraint firstItem="xQe-Si-6h2" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="btb-fu-MjZ"/>
-                                <constraint firstAttribute="centerY" secondItem="bFe-eJ-Jhm" secondAttribute="centerY" id="cw0-Cp-OnZ"/>
-                                <constraint firstItem="bFe-eJ-Jhm" firstAttribute="leading" secondItem="JIw-UX-men" secondAttribute="trailing" constant="8" id="czq-8j-DMl"/>
-                                <constraint firstAttribute="trailing" secondItem="bvy-84-08D" secondAttribute="trailing" constant="8" id="kFm-x0-9Qk"/>
-                                <constraint firstItem="JIw-UX-men" firstAttribute="leading" secondItem="f8U-BW-xp4" secondAttribute="trailing" constant="5" id="oSS-kW-KBR"/>
-                                <constraint firstItem="bvy-84-08D" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="oqO-um-s9q"/>
-                                <constraint firstAttribute="centerY" secondItem="bvy-84-08D" secondAttribute="centerY" id="zVH-6b-4wR"/>
+                                <constraint firstItem="ks3-cq-CcM" firstAttribute="leading" secondItem="byg-1F-tZV" secondAttribute="trailing" constant="4" id="g2L-VK-53U"/>
+                                <constraint firstItem="byg-1F-tZV" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="qzM-3g-uHR"/>
+                                <constraint firstItem="ks3-cq-CcM" firstAttribute="height" secondItem="AbK-jQ-i8h" secondAttribute="height" id="rt6-RU-0X8"/>
+                                <constraint firstAttribute="centerY" secondItem="byg-1F-tZV" secondAttribute="centerY" id="yd6-Py-mPS"/>
                             </constraints>
                         </view>
                     </subviews>
