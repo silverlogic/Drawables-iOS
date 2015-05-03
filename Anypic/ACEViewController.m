@@ -46,6 +46,10 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	// init the preview image
 	self.previewImageView.layer.borderColor = [[UIColor blackColor] CGColor];
 	self.previewImageView.layer.borderWidth = 2.0f;
+    
+    // navbar buttons
+    self.navigationItem.leftBarButtonItems = @[ self.undoButton, self.redoButton, self.clearButton ];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takeScreenshot:)];
 }
 
 - (void)didReceiveMemoryWarning

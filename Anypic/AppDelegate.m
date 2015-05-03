@@ -182,8 +182,8 @@
     self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
 	
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
-//	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:[ACEViewController new]];
-	ACEViewController *canvasViewController = [ACEViewController new];
+	UINavigationController *canvasViewController = [[UINavigationController alloc] initWithRootViewController:[ACEViewController new]];
+//	ACEViewController *canvasViewController = [ACEViewController new];
 
 	UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
     

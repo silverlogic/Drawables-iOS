@@ -19,6 +19,8 @@
 
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *undoButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *redoButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *colorButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *toolButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *alphaButton;
