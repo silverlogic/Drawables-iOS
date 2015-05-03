@@ -18,6 +18,7 @@
 #import "PAPActivityFeedViewController.h"
 #import "PAPPhotoDetailsViewController.h"
 #import "ACEViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate () {
     BOOL firstLaunch;
@@ -41,6 +42,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [Crashlytics startWithAPIKey:@"ccdf9e4a5cefcee65e6f1d40cd5dee0c45a38748"];
 
     // ****************************************************************************
     // Parse initialization
