@@ -53,13 +53,12 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	// set the delegate
 	self.drawingView.delegate = self;
 	
-	// start with a black pen
-	self.lineWidthSlider.value = self.drawingView.lineWidth;
+	// initial color and settings
+	self.drawingView.lineAlpha = MAX(.6,drand48());
+	self.drawingView.lineWidth = drand48()*10;
+	self.drawingView.lineColor = [UIColor colorWithHue:MAX(.6,drand48()) saturation:MAX(.6,drand48()) brightness:MAX(.6,drand48()) alpha:1];
+	[self matchColor];
 	
-	// init the preview image
-	self.previewImageView.layer.borderColor = [[UIColor blackColor] CGColor];
-	self.previewImageView.layer.borderWidth = 2.0f;
-    
     // navbar buttons
     self.navigationItem.leftBarButtonItems = @[ self.undoButton, self.redoButton, self.clearButton ];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(addBackground:)];
@@ -381,6 +380,8 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 - (void)matchColor {
 	self.current.alpha = self.drawingView.lineAlpha;
 	self.current.backgroundColor = self.drawingView.lineColor;
+	self.lineAlphaSlider.value = self.drawingView.lineAlpha;
+	self.lineWidthSlider.value = self.drawingView.lineWidth;
 }
 
 - (IBAction)colorUpdate:(UIButton *)sender {
@@ -403,7 +404,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
         case PaintColorBlue:
             return [UIColor blueColor];
         case PaintColorRandom:
-            return [UIColor colorWithHue:((rand()%256)/256.0) saturation:((rand()%256)/256.0) brightness:((rand()%256)/256.0) alpha:1];
+            return [UIColor colorWithHue:MAX(.6,drand48()) saturation:MAX(.6,drand48()) brightness:MAX(.6,drand48()) alpha:MAX(.6,drand48())];
         case PaintColorPurple:
             return [UIColor purpleColor];
         case PaintColorBrown:
