@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 
 @interface ACEViewController ()<UIActionSheetDelegate, ACEDrawingViewDelegate>
 
+@property (nonatomic, strong) NSArray *colorButtons;
+
 @end
 
 @implementation ACEViewController
@@ -50,6 +52,22 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     // navbar buttons
     self.navigationItem.leftBarButtonItems = @[ self.undoButton, self.redoButton, self.clearButton ];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takeScreenshot:)];
+    
+    // init colors
+    self.colorButtons = @[
+                          self.red,
+                          self.orange,
+                          self.yellow,
+                          self.green,
+                          self.blue,
+                          self.purple,
+//                          self.random,
+                          self.brown,
+                          self.black
+                          ];
+    for (UIButton *button in self.colorButtons) {
+        button.backgroundColor = [self colorForPaintColor:button.tag];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,44 +120,36 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	self.current.backgroundColor = self.drawingView.lineColor;
 }
 
-- (IBAction)colorUpdate:(UIButton *)sender;{
-	switch (sender.tag) {
-			
-		case PaintColorWhite:
-			self.drawingView.lineColor = [UIColor whiteColor];
-			break;
-		case PaintColorRed:
-			self.drawingView.lineColor = [UIColor redColor];
-			break;
-		case PaintColorOrange:
-			self.drawingView.lineColor = [UIColor orangeColor];
-			break;
-		case PaintColorYellow:
-			self.drawingView.lineColor = [UIColor yellowColor];
-			break;
-		case PaintColorGreen:
-			self.drawingView.lineColor = [UIColor greenColor];
-			break;
-		case PaintColorBlue:
-			self.drawingView.lineColor = [UIColor blueColor];
-			break;
-		case PaintColorRandom:
-			self.drawingView.lineColor = [UIColor colorWithHue:((rand()%256)/256.0) saturation:((rand()%256)/256.0) brightness:((rand()%256)/256.0) alpha:1];
-			break;
-		case PaintColorPurple:
-			self.drawingView.lineColor = [UIColor purpleColor];
-			break;
-		case PaintColorBrown:
-			self.drawingView.lineColor = [UIColor brownColor];
-			break;
-		case PaintColorBlack:
-			self.drawingView.lineColor = [UIColor blackColor];
-			break;
-		default:
-			self.drawingView.lineColor = [UIColor blackColor];
-			break;
-	}
-	[self matchColor];
+- (IBAction)colorUpdate:(UIButton *)sender {
+    self.drawingView.lineColor = [self colorForPaintColor:sender.tag];
+    [self matchColor];
+}
+
+- (UIColor*)colorForPaintColor:(PaintColor)paintColor {
+    switch (paintColor) {
+        case PaintColorWhite:
+            return [UIColor whiteColor];
+        case PaintColorRed:
+            return [UIColor redColor];
+        case PaintColorOrange:
+            return [UIColor orangeColor];
+        case PaintColorYellow:
+            return [UIColor yellowColor];
+        case PaintColorGreen:
+            return [UIColor greenColor];
+        case PaintColorBlue:
+            return [UIColor blueColor];
+        case PaintColorRandom:
+            return [UIColor colorWithHue:((rand()%256)/256.0) saturation:((rand()%256)/256.0) brightness:((rand()%256)/256.0) alpha:1];
+        case PaintColorPurple:
+            return [UIColor purpleColor];
+        case PaintColorBrown:
+            return [UIColor brownColor];
+        case PaintColorBlack:
+            return [UIColor blackColor];
+        default:
+            return [UIColor blackColor];
+    }
 }
 
 #pragma mark - Action Sheet Delegate
