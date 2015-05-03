@@ -34,6 +34,8 @@ https://github.com/silverlogic
 
 [ACEDrawing](https://github.com/acerbetti/ACEDrawingView), by [acerbetti](https://github.com/acerbetti)
 
+[React Hack](https://github.com/petehunt/ReactHack) by [Pete Hunt](https://github.com/petehunt/)
+
 
 ## Team TSL
 
