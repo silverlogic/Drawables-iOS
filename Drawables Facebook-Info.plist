@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Drawables</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
@@ -100,7 +100,7 @@
 				<key>Blue</key>
 				<real>0.117841511964798</real>
 				<key>Green</key>
-				<real>0.1536859273910522</real>
+				<real>0.15368592739105219</real>
 				<key>Red</key>
 				<real>0.2008436918258667</real>
 			</dict>
