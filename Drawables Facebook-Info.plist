@@ -35,7 +35,7 @@
 			<string>Icon@2x</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb976463495720877original</string>
+				<string>fb976463495720877fb</string>
 			</array>
 		</dict>
 		<dict>
@@ -63,10 +63,10 @@
 	<string>${APP_VERSION}</string>
 	<key>FacebookAppID</key>
 	<string>976463495720877</string>
-	<key>FacebookUrlSchemeSuffix</key>
-	<string>original</string>
 	<key>FacebookDisplayName</key>
 	<string>Drawables</string>
+	<key>FacebookUrlSchemeSuffix</key>
+	<string>fb</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.photography</string>
 	<key>LSRequiresIPhoneOS</key>
