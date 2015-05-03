@@ -313,7 +313,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cS-Jw-NLH" userLabel="Eraser Button">
-                                    <rect key="frame" x="255" y="-1" width="61" height="62"/>
+                                    <rect key="frame" x="251" y="-1" width="61" height="62"/>
                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="2cS-Jw-NLH" secondAttribute="height" multiplier="1:1" id="XPV-iE-Wbn"/>
@@ -332,7 +332,7 @@
                                 <constraint firstItem="byg-1F-tZV" firstAttribute="leading" secondItem="xQe-Si-6h2" secondAttribute="trailing" constant="4" id="81k-JM-EgN"/>
                                 <constraint firstAttribute="height" secondItem="2cS-Jw-NLH" secondAttribute="height" id="Hu7-ar-GKg"/>
                                 <constraint firstItem="cUd-7S-ADp" firstAttribute="leading" secondItem="ks3-cq-CcM" secondAttribute="trailing" constant="4" id="LL6-Oi-gOd"/>
-                                <constraint firstAttribute="trailing" secondItem="2cS-Jw-NLH" secondAttribute="trailing" constant="4" id="M9L-4l-obr"/>
+                                <constraint firstAttribute="trailing" secondItem="2cS-Jw-NLH" secondAttribute="trailing" constant="8" id="M9L-4l-obr"/>
                                 <constraint firstAttribute="height" secondItem="cUd-7S-ADp" secondAttribute="height" id="MVt-p1-iKw"/>
                                 <constraint firstAttribute="centerY" secondItem="xQe-Si-6h2" secondAttribute="centerY" id="Qmc-kw-fS6"/>
                                 <constraint firstAttribute="centerY" secondItem="ks3-cq-CcM" secondAttribute="centerY" id="WeQ-bx-NSU"/>
