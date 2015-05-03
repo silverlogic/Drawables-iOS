@@ -12,6 +12,7 @@
 #import "PAPPhotoDetailsFooterView.h"
 #import "UIImage+ResizeAdditions.h"
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
+#import "MBProgressHUD.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -34,10 +35,12 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 @interface ACEViewController ()<UIActionSheetDelegate, ACEDrawingViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) PFFile *photoFile;
+@property (nonatomic, strong) PFFile *thumbnailFile;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
 
 @property (nonatomic, strong) NSArray *colorButtons;
+@property (nonatomic, strong) UIButton *shareButton;
 
 @end
 
@@ -59,7 +62,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     
     // navbar buttons
     self.navigationItem.leftBarButtonItems = @[ self.undoButton, self.redoButton, self.clearButton ];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takeScreenshot:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(addBackground:)];
     
     // init colors
     self.colorButtons = @[
@@ -76,12 +79,35 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
     for (UIButton *button in self.colorButtons) {
         button.backgroundColor = [self colorForPaintColor:button.tag];
     }
+    
+    // init share button
+    
+    //Define the size of the circular button at creation time
+    CGFloat buttonWidth = 50;
+    CGFloat padding = 5.0f;
+    CGFloat buttonHeight = self.tabBarController.tabBar.bounds.size.height - padding;
+    self.shareButton = [FBSDKMessengerShareButton circularButtonWithStyle:FBSDKMessengerShareButtonStyleBlue width:buttonWidth];
+    self.shareButton.frame = CGRectMake( self.tabBarController.tabBar.bounds.size.width / 2.0f - buttonHeight / 2.0f, padding / 2.0f, buttonHeight, buttonHeight);
+    [self.shareButton addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.tabBarController.tabBar addSubview:self.shareButton];
 }
 
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.shareButton.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    self.shareButton.hidden = YES;
 }
 
 #pragma mark - Actions
@@ -98,8 +124,7 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 	}
 }
 
-- (IBAction)takeScreenshot:(id)sender
-{
+- (IBAction)addBackground:(id)sender {
 	BOOL cameraDeviceAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 	BOOL photoLibraryAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
 	
@@ -110,6 +135,131 @@ typedef NS_ENUM(NSUInteger, PaintColor) {
 		// if we don't have at least two options, we automatically show whichever is available (camera or roll)
 		[self shouldPresentPhotoCaptureController];
 	}
+}
+
+- (void)savePressed {
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    [self shareWithMessenger];
+    [self shouldUploadImage:self.drawingView.image];
+    [self clear:nil];
+    [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+}
+
+- (void)shareWithMessenger {
+    if ([FBSDKMessengerSharer messengerPlatformCapabilities] & FBSDKMessengerPlatformCapabilityImage) {
+        [FBSDKMessengerSharer shareImage:self.drawingView.image withOptions:nil];
+    }
+}
+
+- (void)saveToBackend {
+    NSDictionary *userInfo = [NSDictionary dictionary];
+    NSString *trimmedComment = nil; //[self.commentTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (trimmedComment.length != 0) {
+        userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                    trimmedComment,kPAPEditPhotoViewControllerUserInfoCommentKey,
+                    nil];
+    }
+    
+    if (!self.photoFile || !self.thumbnailFile) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+        [alert show];
+        return;
+    }
+    
+    // both files have finished uploading
+    
+    // create a photo object
+    PFObject *photo = [PFObject objectWithClassName:kPAPPhotoClassKey];
+    [photo setObject:[PFUser currentUser] forKey:kPAPPhotoUserKey];
+    [photo setObject:self.photoFile forKey:kPAPPhotoPictureKey];
+    [photo setObject:self.thumbnailFile forKey:kPAPPhotoThumbnailKey];
+    
+    // photos are public, but may only be modified by the user who uploaded them
+    PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [photoACL setPublicReadAccess:YES];
+    photo.ACL = photoACL;
+    
+    // Request a background execution task to allow us to finish uploading the photo even if the app is backgrounded
+    self.photoPostBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
+    }];
+    
+    // save
+    [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Photo uploaded");
+            
+            [[PAPCache sharedCache] setAttributesForPhoto:photo likers:[NSArray array] commenters:[NSArray array] likedByCurrentUser:NO];
+            
+            // userInfo might contain any caption which might have been posted by the uploader
+            if (userInfo) {
+                NSString *commentText = [userInfo objectForKey:kPAPEditPhotoViewControllerUserInfoCommentKey];
+                
+                if (commentText && commentText.length != 0) {
+                    // create and save photo caption
+                    PFObject *comment = [PFObject objectWithClassName:kPAPActivityClassKey];
+                    [comment setObject:kPAPActivityTypeComment forKey:kPAPActivityTypeKey];
+                    [comment setObject:photo forKey:kPAPActivityPhotoKey];
+                    [comment setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
+                    [comment setObject:[PFUser currentUser] forKey:kPAPActivityToUserKey];
+                    [comment setObject:commentText forKey:kPAPActivityContentKey];
+                    
+                    PFACL *ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                    [ACL setPublicReadAccess:YES];
+                    comment.ACL = ACL;
+                    
+                    [comment saveEventually];
+                    [[PAPCache sharedCache] incrementCommentCountForPhoto:photo];
+                }
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:PAPTabBarControllerDidFinishEditingPhotoNotification object:photo];
+        } else {
+            NSLog(@"Photo failed to save: %@", error);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+        [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
+    }];
+}
+
+- (BOOL)shouldUploadImage:(UIImage *)anImage {
+    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
+    UIImage *thumbnailImage = [anImage thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
+    
+    // JPEG to decrease file size and enable faster uploads & downloads
+    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
+    
+    if (!imageData || !thumbnailImageData) {
+        return NO;
+    }
+    
+    self.photoFile = [PFFile fileWithData:imageData];
+    self.thumbnailFile = [PFFile fileWithData:thumbnailImageData];
+    
+    // Request a background execution task to allow us to finish uploading the photo even if the app is backgrounded
+    self.fileUploadBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+    }];
+    
+    NSLog(@"Requested background expiration task with id %lu for Anypic photo upload", (unsigned long)self.fileUploadBackgroundTaskId);
+    [self.photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Photo uploaded successfully");
+            [self saveToBackend];
+            [self.thumbnailFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"Thumbnail uploaded successfully");
+                }
+                [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+            }];
+        } else {
+            [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+        }
+    }];
+    
+    return YES;
 }
 
 - (BOOL)shouldPresentPhotoCaptureController {

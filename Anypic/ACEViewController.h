@@ -53,7 +53,7 @@
 - (IBAction)undo:(id)sender;
 - (IBAction)redo:(id)sender;
 - (IBAction)clear:(id)sender;
-- (IBAction)takeScreenshot:(id)sender;
+- (IBAction)addBackground:(id)sender;
 
 // settings
 - (IBAction)toolChange:(id)sender;
